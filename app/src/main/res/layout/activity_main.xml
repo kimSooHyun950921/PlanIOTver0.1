@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:custom="http://schemas.android.com/tools">
+    xmlns:custom="http://schemas.android.com/tools"
+    >
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="match_parent">
@@ -13,7 +14,7 @@
             android:orientation="vertical"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-           >
+            android:weightSum="1">
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
@@ -53,7 +54,7 @@
                 />
             <ImageView
                 android:id="@+id/fullstatusImage"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="50dp"
                 android:layout_width="60dp"
                 android:layout_height="80dp"
                 android:textSize="20dp"
@@ -126,7 +127,7 @@
                             android:layout_marginRight="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="암막커튼치기"/>
+                            android:text="커튼치기"/>
                         <android.support.v7.widget.SwitchCompat
                             android:id="@+id/sun_block_curtain"
                             android:layout_width="wrap_content"
@@ -199,9 +200,11 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp"
+                android:layout_weight="0.76">
                 <LinearLayout
                     android:id="@+id/soilInfoImageLinearLayout"
                     android:layout_width="wrap_content"
@@ -214,31 +217,57 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="토양"
+                        android:text="온도"
 
                         android:textSize="20dp"/>
 
                     <ImageView
-                        android:id="@+id/soilInfoImage"
+                        android:id="@+id/temperInfoImage"
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:textSize="20dp"
-                        android:src="@drawable/soil"
+                        android:src="@drawable/temper"
                         />
                 </LinearLayout>
 
 
                 <EditText
+                    android:id="@+id/temperText"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="55dp"
                     android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:text="20도"
+                    android:enabled="false" />
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"
+                    android:transitionGroup="true"
+                    android:baselineAligned="true"
+                    android:gravity="right"
+                    android:layout_marginRight="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="비료가 필요해요"
-                    android:enabled="false" />
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="5dp">
+                    <TextView
+                        android:baselineAligned="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="암막치기"/>
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@id/sun_block_curtain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"/>
+                </LinearLayout>
             </LinearLayout>
 
 
