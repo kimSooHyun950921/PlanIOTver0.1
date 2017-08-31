@@ -17,9 +17,10 @@ import android.widget.Toast;
 public class Dic extends AppCompatActivity {
 
     ListView list;
-    String[] names = {"튤립"};
-    Integer[] image = {R.drawable.tulip};
-
+    String[] names = {"튤립","장미","해바리기","로즈마리"};
+    Integer[] image = {R.drawable.tulip,R.drawable.rose,R.drawable.sunflower,R.drawable.rosemary};
+    String[] summary ={"백합과의 여러해살이풀로 튤립속 식물의 총칭","장미과 장미속에 속하는 관목의 총칭","" +
+            "국화과에 속하는 일년생 식물로, 꽃은 두상화","바늘같은 잎을 가진 여러해살이 식물로, 민트와 같은 과"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class Dic extends AppCompatActivity {
     public class CustomList extends ArrayAdapter<String> {
         private final Activity context;
         public CustomList(Activity contexts) {
-            super(contexts,R.layout.listitem,names);
+            super(contexts, R.layout.listitem,names);
             this.context = contexts;
         }
 
@@ -53,7 +54,7 @@ public class Dic extends AppCompatActivity {
             TextView content = (TextView) rowView.findViewById(R.id.content);
             name.setText(names[position]);
             imageView.setImageResource(image[position]);
-            content.setText("내용");
+            content.setText(summary[position]);
             return rowView;
         }
 
