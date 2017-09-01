@@ -14,8 +14,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Dic extends AppCompatActivity {
 
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("message");
+    DicDatabase dicdb;
     ListView list;
     String[] names = {"튤립","장미","해바리기","로즈마리"};
     Integer[] image = {R.drawable.tulip,R.drawable.rose,R.drawable.sunflower,R.drawable.rosemary};
@@ -36,6 +42,12 @@ public class Dic extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        dicdb = new DicDatabase();
+    }
+    private void writeNewUser(){
+        dicdb = new DicDatabase();
+
+
     }
 
     public class CustomList extends ArrayAdapter<String> {
