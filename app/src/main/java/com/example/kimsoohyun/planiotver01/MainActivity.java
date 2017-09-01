@@ -3,7 +3,6 @@ package com.example.kimsoohyun.planiotver01;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -38,11 +37,11 @@ public class MainActivity extends AppCompatActivity {
             ad.setPositiveButton("네",new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
-                    //Intent intent = new Intent(MainActivity.this,Dic.class);
-                    //startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this,Dic.class);
+                    startActivity(intent);
                     /*db에저장한것을 불러와 adapter에 넣어주어야한다*/
-                    adapter.addItem(ContextCompat.getDrawable(MainActivity.this,R.drawable.tulip),"튤립","2017년 8월 3일");
-                    listview.setAdapter(adapter);
+                    /*adapter.addItem(ContextCompat.getDrawable(MainActivity.this,R.drawable.tulip),"튤립","2017년 8월 3일");
+                    listview.setAdapter(adapter);*/
                     dialog.dismiss();
                 }
             });
