@@ -12,5 +12,6 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         /*식물이름바꿔주기*/
 
+
     }
 }

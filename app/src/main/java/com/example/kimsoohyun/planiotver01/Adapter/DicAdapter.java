@@ -1,7 +1,6 @@
 package com.example.kimsoohyun.planiotver01.Adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,20 +47,17 @@ public class DicAdapter extends BaseAdapter {
         if(view == null){
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.listitem,viewGroup,false);}
+
         ImageView iconImageView = (ImageView)view.findViewById(R.id.dic_image);
         TextView plantName = (TextView) view.findViewById(R.id.name);
         TextView plantExplantion = (TextView)view.findViewById(R.id.content);
 
-    //    iconImageView.setImageDrawable(dicItemList.get(position).getDicPlantImage());
         plantName.setText(dicItemList.get(position).getName());
         plantExplantion.setText(dicItemList.get(position).getExplanation());
         return view;
 
         }
-        public void addItem(Drawable icon, String name, String Explanation){
-         //   DicItem item = new DicItem(icon,name,Explanation);
-           // dicItemList.add(item);
-        }
+
 
 
 }

@@ -33,15 +33,15 @@ public class DicAdpaterRecycler extends RecyclerView.Adapter<DicAdpaterRecycler.
 
     static  class ViewHolderDic extends DicViewHolder {
 
-        public ViewHolderDic(View itemView) {
-           super(itemView);
+        public ViewHolderDic(View itemView,Context ctx,ArrayList<DicItem> item) {
+           super(itemView,ctx,item);
         }
 
     }
     @Override
     public DicAdpaterRecycler.ViewHolderDic onCreateViewHolder(ViewGroup parent, int viewType) {
        View view = layoutInflater.from(context).inflate(R.layout.listitem,parent,false);
-        ViewHolderDic viewHolder = new ViewHolderDic(view);
+        ViewHolderDic viewHolder = new ViewHolderDic(view,context,listDic);
 
         return viewHolder;
     }
