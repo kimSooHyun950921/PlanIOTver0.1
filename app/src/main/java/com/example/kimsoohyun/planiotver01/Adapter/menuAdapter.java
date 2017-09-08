@@ -1,4 +1,4 @@
-package com.example.kimsoohyun.planiotver01;
+package com.example.kimsoohyun.planiotver01.Adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -9,13 +9,16 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.kimsoohyun.planiotver01.Item.ItemMenus;
+import com.example.kimsoohyun.planiotver01.R;
+
 import java.util.ArrayList;
 
 /**
  * Created by kimsoohyun on 2017-08-01.
  */
 public class menuAdapter extends BaseAdapter {
-    private ArrayList<ItemMenu> menuList = new ArrayList<>();
+    private ArrayList<ItemMenus> menuList = new ArrayList<>();
     public menuAdapter(){
 
     }
@@ -58,7 +61,7 @@ public class menuAdapter extends BaseAdapter {
 
     }
     public void addItem(Drawable icon, String name, String date) {
-        ItemMenu item = new ItemMenu(icon,name,date);
+        ItemMenus item = new ItemMenus(icon,name,date);
         menuList.add(item);
     }
 

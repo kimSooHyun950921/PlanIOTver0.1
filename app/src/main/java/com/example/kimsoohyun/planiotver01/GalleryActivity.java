@@ -7,6 +7,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.example.kimsoohyun.planiotver01.Adapter.ImageAdapter;
+
 public class GalleryActivity extends AppCompatActivity {
 
     @Override

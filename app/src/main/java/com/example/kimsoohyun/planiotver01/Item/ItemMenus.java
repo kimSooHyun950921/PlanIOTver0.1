@@ -1,16 +1,17 @@
-package com.example.kimsoohyun.planiotver01;
+package com.example.kimsoohyun.planiotver01.Item;
 
 import android.graphics.drawable.Drawable;
 
 /**
- * Created by kimsoohyun on 2017-08-01.
+ * Created by kimsoohyun on 2017-09-07.
  */
-public class ItemMenu {
+
+public class ItemMenus {
     Drawable myPlantImage;
     String name;
     String date;
 
-    public ItemMenu(Drawable myPlantImage, String name, String date) {
+    public ItemMenus(Drawable myPlantImage, String name, String date) {
         this.myPlantImage = myPlantImage;
         this.name = name;
         this.date = date;

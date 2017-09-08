@@ -11,7 +11,7 @@ import android.widget.ImageView;
  * Created by tjdwp on 2017-08-08.
  */
 
-public class Dic_info extends AppCompatActivity{
+public class DicInfoActivity extends AppCompatActivity{
     EditText plantName;
     ImageView plantImage;
 
@@ -26,7 +26,7 @@ public class Dic_info extends AppCompatActivity{
         /*db에 저장하고 저장한내용으로 바꿔주기*/
         String plantNameToString = plantName.getText().toString();
 
-        Intent intent = new Intent(Dic_info.this,MainActivity.class);
+        Intent intent = new Intent(DicInfoActivity.this,MainActivity.class);
         intent.putExtra("PLANTNAME",plantNameToString);
         intent.putExtra("PLANTIMAGE",R.drawable.tulip);
         startActivity(intent);

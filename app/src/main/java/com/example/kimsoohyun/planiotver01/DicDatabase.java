@@ -1,7 +1,5 @@
 package com.example.kimsoohyun.planiotver01;
 
-import java.io.File;
-
 /**
  * Created by kimsoohyun on 2017-09-01.
  */
@@ -9,7 +7,7 @@ import java.io.File;
 public class DicDatabase {
     public String plantName;
     public String plantExplanation;
-    public File myplantImage;
+    public String myplantImageURL;
     public float plantHumidity;
     public float plantLight;
     public float plantTemperature;
@@ -30,12 +28,12 @@ public class DicDatabase {
         this.plantExplanation = plantExplanation;
     }
 
-    public File getMyplantImage() {
-        return myplantImage;
+    public String getMyplantImage() {
+        return myplantImageURL;
     }
 
-    public void setMyplantImage(File myplantImage) {
-        this.myplantImage = myplantImage;
+    public void setMyplantImage(String myplantImage) {
+        this.myplantImageURL = myplantImage;
     }
 
     public float getPlantHumidity() {
@@ -64,7 +62,7 @@ public class DicDatabase {
     public DicDatabase() {
         this.plantName = null;
         this.plantExplanation = null;
-        this.myplantImage = null;
+        this.myplantImageURL = null;
         this.plantHumidity = 0;
         this.plantLight = 0;
         this.plantTemperature = 0;
@@ -76,11 +74,11 @@ public class DicDatabase {
         this.plantTemperature = plantTemperature;
     }
 
-    public DicDatabase(String plantName, String plantExplanation, File myplantImage, float plantHumidity, float plantLight, float plantTemperature) {
+    public DicDatabase(String plantName, String plantExplanation,String myplantImageURL, float plantHumidity, float plantLight, float plantTemperature) {
 
         this.plantName = plantName;
         this.plantExplanation = plantExplanation;
-        this.myplantImage = myplantImage;
+        this.myplantImageURL = myplantImageURL;
         this.plantHumidity = plantHumidity;
         this.plantLight = plantLight;
         this.plantTemperature = plantTemperature;

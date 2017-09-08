@@ -11,11 +11,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.kimsoohyun.planiotver01.Adapter.menuAdapter;
+
 
 public class MainActivity extends AppCompatActivity {
-    ListView listview;
-
-    menuAdapter adapter;
+    private ListView listview;
+    private menuAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +27,6 @@ public class MainActivity extends AppCompatActivity {
         adapter = new menuAdapter();
         listview = (ListView) findViewById(R.id.myplantList);
 
-
-
-
-
         if(adapter.isEmpty()){
             AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this);
             ad.setTitle("식물이 없어요!");
@@ -37,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             ad.setPositiveButton("네",new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
-                    Intent intent = new Intent(MainActivity.this,Dic.class);
+                    Intent intent = new Intent(MainActivity.this,DicMenuActivity.class);
                     startActivity(intent);
                     /*db에저장한것을 불러와 adapter에 넣어주어야한다*/
                     /*adapter.addItem(ContextCompat.getDrawable(MainActivity.this,R.drawable.tulip),"튤립","2017년 8월 3일");
@@ -78,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id==R.id.newPost) {
-            Intent intent = new Intent(MainActivity.this,Dic.class);
+            Intent intent = new Intent(MainActivity.this,DicMenuActivity.class);
             startActivity(intent);
 
 

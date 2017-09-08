@@ -1,4 +1,4 @@
-package com.example.kimsoohyun.planiotver01;
+package com.example.kimsoohyun.planiotver01.Adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import com.example.kimsoohyun.planiotver01.R;
 
 /**
  * Created by kimsoohyun on 2017-08-23.
