@@ -49,7 +49,7 @@ public class menuAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.menu_item_layout, parent, false);}
             ImageView iconImageView = (ImageView) view.findViewById(R.id.myPlantImage);
             TextView plantName = (TextView) view.findViewById(R.id.myPlantName);
-            TextView plantDate = (TextView) view.findViewById(R.id.plantDate);
+            TextView plantDate = (TextView) view.findViewById(R.id.menu_plantDate);
 
 
             iconImageView.setImageDrawable(menuList.get(position).getMyPlantImage());

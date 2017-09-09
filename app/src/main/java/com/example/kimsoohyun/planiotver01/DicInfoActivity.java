@@ -1,15 +1,25 @@
 package com.example.kimsoohyun.planiotver01;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.kimsoohyun.planiotver01.Item.DicItem;
+import com.example.kimsoohyun.planiotver01.Item.MyPlantItem;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static com.example.kimsoohyun.planiotver01.R.id.pname;
 
@@ -25,17 +35,19 @@ public class DicInfoActivity extends AppCompatActivity{
     TextView plantLight;
     TextView plantTemper;
     Intent intentFromDicMenu;
-    Object humidity;
-    Object temper;
-    Object light;
+
+    DatabaseReference databaseReference;
+    DicItem item;
+    String InputValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dic_info);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("myPlant");
 
         intentFromDicMenu = getIntent();
-        DicItem item= intentFromDicMenu.getParcelableExtra("DicItem");
+        item= intentFromDicMenu.getParcelableExtra("DicItem");
 
         plantName = (TextView)findViewById(pname);
         plantImage= (ImageView)findViewById(R.id.tulip);
@@ -61,23 +73,62 @@ public class DicInfoActivity extends AppCompatActivity{
 
 
     }
-
+/*
+*
+*  String uid;
+    String myPlantGallery;
+    String myPlantName;
+    float myPlantHumidity;
+    float myPlantLight;
+    float myPlantTemperatuer;
+*
+*
+* */
 
 
 
     public void addPlant(View v){
         /*db에 저장하고 저장한내용으로 바꿔주기*/
         String plantNameToString = plantName.getText().toString();
+        startDialog();
 
+    }
 
+    private void startDialog() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(DicInfoActivity.this);
+        final EditText text = new EditText(this);
+        dialog.setTitle("식물이름을 설정해주세요!");
+        dialog.setView(text);
+        dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                InputValue = text.getText().toString();
+                long now = System.currentTimeMillis();
+                String getTime = setDate(now);
+                saveDataBase(getTime);
+                startIntent();
+            }
+        });
+        dialog.show();
+    }
+
+    private void startIntent() {
         Intent intent = new Intent(DicInfoActivity.this,MainActivity.class);
-        intent.putExtra("PLANTNAME",plantNameToString);
-        intent.putExtra("PLANTIMAGE",R.drawable.tulip);
         startActivity(intent);
     }
 
+    private void saveDataBase(String getTime) {
+        MyPlantItem myItem = new MyPlantItem(item.getDicPlantImage(),InputValue,item.getName(),getTime);
+        databaseReference.push().setValue(myItem);
 
+        Toast.makeText(getApplication(),InputValue,Toast.LENGTH_LONG).show();
+    }
 
+    private String setDate(long now) {
+        Date date = new Date(now);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy년MM월dd일");
+        return sdf.format(date);
+    }
 
 
 }
