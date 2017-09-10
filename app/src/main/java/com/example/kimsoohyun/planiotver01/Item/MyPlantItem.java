@@ -25,6 +25,13 @@ public class MyPlantItem {
     float myPlantHumidity;
     float myPlantLight;
 
+    public MyPlantItem() {
+        this.myPlantImg = null;
+        this.myPlantName =null;
+        this.originalPlantName = null;
+        this.plantDate = null;
+    }
+
     public String getOriginalPlantName() {
         return originalPlantName;
     }

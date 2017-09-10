@@ -1,7 +1,6 @@
 package com.example.kimsoohyun.planiotver01.Adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.kimsoohyun.planiotver01.Item.ItemMenus;
+import com.bumptech.glide.Glide;
+import com.example.kimsoohyun.planiotver01.Item.MyPlantItem;
 import com.example.kimsoohyun.planiotver01.R;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Created by kimsoohyun on 2017-08-01.
  */
 public class menuAdapter extends BaseAdapter {
-    private ArrayList<ItemMenus> menuList = new ArrayList<>();
+    private ArrayList<MyPlantItem> menuList = new ArrayList<>();
     public menuAdapter(){
 
     }
@@ -50,18 +50,22 @@ public class menuAdapter extends BaseAdapter {
             ImageView iconImageView = (ImageView) view.findViewById(R.id.myPlantImage);
             TextView plantName = (TextView) view.findViewById(R.id.myPlantName);
             TextView plantDate = (TextView) view.findViewById(R.id.menu_plantDate);
+            TextView originalPlantName = (TextView)view.findViewById(R.id.menu_original_plant_name);
 
 
-            iconImageView.setImageDrawable(menuList.get(position).getMyPlantImage());
-            plantName.setText(menuList.get(position).getName());
-            plantDate.setText(menuList.get(position).getDate());
+        Glide.with(iconImageView.getContext())
+                .load(menuList.get(position).getMyPlantImg())
+                .into(iconImageView);
+            plantName.setText(menuList.get(position).getMyPlantName());
+            plantDate.setText(menuList.get(position).getPlantDate());
+            originalPlantName.setText(menuList.get(position).getOriginalPlantName());
             return view;
 
 
 
     }
-    public void addItem(Drawable icon, String name, String date) {
-        ItemMenus item = new ItemMenus(icon,name,date);
+    public void addItem(String icon,String plantName ,String originalName, String date) {
+        MyPlantItem item = new MyPlantItem(icon,plantName,originalName,date);
         menuList.add(item);
     }
 

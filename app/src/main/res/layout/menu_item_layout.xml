@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:text="dalshim"
             android:id="@+id/myPlantName"
-            android:textSize="36dp"
+            android:textSize="30dp"
             android:gravity="center_vertical"
             android:layout_weight="3"/>
         <LinearLayout
@@ -41,18 +41,18 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/menu_original_plant_name"
                 android:text="dalmatiflower"
-                android:textSize="22dp"/>
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/menu_plantDate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
                 android:gravity="right|bottom"
                 android:paddingRight="8dp"
                 android:text="2011년3월4일"
                 android:textColor="#666666"
-                android:textSize="18dp" />
+                android:textSize="15dp" />
         </LinearLayout>
     </LinearLayout>
    </LinearLayout>
