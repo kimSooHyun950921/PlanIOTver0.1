@@ -15,8 +15,11 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.kimsoohyun.planiotver01.Item.DicItem;
 import com.example.kimsoohyun.planiotver01.Item.MyPlantItem;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,6 +40,7 @@ public class DicInfoActivity extends AppCompatActivity{
     Intent intentFromDicMenu;
 
     DatabaseReference databaseReference;
+    DatabaseReference myPlantCountRef;
     DicItem item;
     String InputValue;
 
@@ -45,7 +49,7 @@ public class DicInfoActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dic_info);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("myPlant");
-
+        myPlantCountRef = FirebaseDatabase.getInstance().getReference().child("myPlant").child("size");
         intentFromDicMenu = getIntent();
         item= intentFromDicMenu.getParcelableExtra("DicItem");
 
@@ -102,6 +106,7 @@ public class DicInfoActivity extends AppCompatActivity{
         dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                addPlantCount();
                 InputValue = text.getText().toString();
                 long now = System.currentTimeMillis();
                 String getTime = setDate(now);
@@ -110,6 +115,24 @@ public class DicInfoActivity extends AppCompatActivity{
             }
         });
         dialog.show();
+    }
+
+    private void addPlantCount() {
+        myPlantCountRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Object plantCount = dataSnapshot.getValue();
+                Long changeToIntegerPlantCount = 0L;
+                while(!plantCount.equals(changeToIntegerPlantCount)){
+                    changeToIntegerPlantCount++;
+                }
+                myPlantCountRef.setValue(changeToIntegerPlantCount+1);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
     private void startIntent() {
