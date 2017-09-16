@@ -11,9 +11,11 @@ public class splashActivity extends Activity {
 
     @Override
     protected  void onCreate(Bundle savedInstanceState){
+        setContentView(R.layout.activity_splash);
+
         super.onCreate(savedInstanceState);
         try{
-            Thread.sleep(4000);
+            Thread.sleep(8000);
         }catch(InterruptedException e){
             e.printStackTrace();
         }

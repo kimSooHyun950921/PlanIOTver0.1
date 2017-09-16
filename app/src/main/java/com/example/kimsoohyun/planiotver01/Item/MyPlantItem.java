@@ -1,13 +1,17 @@
 package com.example.kimsoohyun.planiotver01.Item;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * Created by kimsoohyun on 2017-09-09.
  */
 
-public class MyPlantItem {
+public class MyPlantItem implements Parcelable {
     String uid;
     String myPlantImg;
 
@@ -31,6 +35,46 @@ public class MyPlantItem {
         this.originalPlantName = null;
         this.plantDate = null;
     }
+
+    protected MyPlantItem(Parcel in) {
+        uid = in.readString();
+        myPlantImg = in.readString();
+        myPlantName = in.readString();
+        originalPlantName = in.readString();
+        plantDate = in.readString();
+        myPlantHumidity = in.readFloat();
+        myPlantLight = in.readFloat();
+        myPlantTemperatuer = in.readFloat();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(uid);
+        dest.writeString(myPlantImg);
+        dest.writeString(myPlantName);
+        dest.writeString(originalPlantName);
+        dest.writeString(plantDate);
+        dest.writeFloat(myPlantHumidity);
+        dest.writeFloat(myPlantLight);
+        dest.writeFloat(myPlantTemperatuer);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<MyPlantItem> CREATOR = new Creator<MyPlantItem>() {
+        @Override
+        public MyPlantItem createFromParcel(Parcel in) {
+            return new MyPlantItem(in);
+        }
+
+        @Override
+        public MyPlantItem[] newArray(int size) {
+            return new MyPlantItem[size];
+        }
+    };
 
     public String getOriginalPlantName() {
         return originalPlantName;

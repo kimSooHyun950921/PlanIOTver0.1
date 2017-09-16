@@ -77,18 +77,6 @@ public class DicInfoActivity extends AppCompatActivity{
 
 
     }
-/*
-*
-*  String uid;
-    String myPlantGallery;
-    String myPlantName;
-    float myPlantHumidity;
-    float myPlantLight;
-    float myPlantTemperatuer;
-*
-*
-* */
-
 
 
     public void addPlant(View v){

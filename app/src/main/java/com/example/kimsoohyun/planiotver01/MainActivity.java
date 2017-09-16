@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private Intent IntentFromDicInfo = getIntent();
     private ArrayList<MyPlantItem> list = new ArrayList<>();
     private Long myPlantCount;
+    private Intent intent;
+    private MyPlantItem plantItem;
 
 
     @Override
@@ -71,15 +73,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-      // int childSize = Integer.parseInt(myRef.child("size").getKey());
-        //if( childSize<=0) {
-         /*   startDialog();
-        }
-        else{
-            updateList();
-            myRef.child("size").setValue(childSize++);
-        }*/
-
 
 
 
@@ -88,7 +81,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 //ItemMenu item = (ItemMenu)adapterView.getItemAtPosition(position);
+
                 Intent intent = new Intent(MainActivity.this,MenuActivity.class);
+                MyPlantItem sendToMenuAcitivity = list.get(position);
+                intent.putExtra("date",sendToMenuAcitivity.getPlantDate());
+                intent.putExtra("name",sendToMenuAcitivity.getMyPlantName());
+                intent.putExtra("img",sendToMenuAcitivity.getMyPlantImg());
+
+
                 startActivity(intent);
             }
         });
@@ -104,7 +104,8 @@ public class MainActivity extends AppCompatActivity {
         ad.setPositiveButton("네",new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int i) {
-                Intent intent = new Intent(MainActivity.this,DicMenuActivity.class);
+                intent = new Intent(MainActivity.this,DicMenuActivity.class);
+
                 startActivity(intent);
 
                 dialog.dismiss();
@@ -130,9 +131,13 @@ public class MainActivity extends AppCompatActivity {
                     rootRef.child("size").setValue(1);
 
                 }else {
+
+                    plantItem = dataSnapshot.getValue(MyPlantItem.class);
+                    list.add(plantItem);
                     adapter.addItem(dataSnapshot.getValue(MyPlantItem.class).getMyPlantImg(), dataSnapshot.getValue(MyPlantItem.class).getMyPlantName()
                             , dataSnapshot.getValue(MyPlantItem.class).getOriginalPlantName(), dataSnapshot.getValue(MyPlantItem.class).getPlantDate());
                     listview.setAdapter(adapter);
+
                     Log.i("메뉴스냅샷정보", String.valueOf(dataSnapshot.getValue(MyPlantItem.class).getMyPlantName()));
                 }
 
