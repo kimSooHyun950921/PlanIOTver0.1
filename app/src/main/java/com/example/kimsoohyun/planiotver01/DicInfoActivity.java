@@ -95,7 +95,14 @@ public class DicInfoActivity extends AppCompatActivity{
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 addPlantCount();
-                InputValue = text.getText().toString();
+                String s = text.getText().toString();
+                if(!s.isEmpty() && !s.equals("null")){
+                    InputValue = text.getText().toString();
+                }
+                else {
+                    InputValue = item.getName();
+                }
+
                 long now = System.currentTimeMillis();
                 String getTime = setDate(now);
                 saveDataBase(getTime);

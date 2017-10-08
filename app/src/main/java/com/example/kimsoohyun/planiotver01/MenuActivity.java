@@ -1,11 +1,13 @@
 package com.example.kimsoohyun.planiotver01;
 
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -23,18 +25,21 @@ import com.bumptech.glide.Glide;
 import com.example.kimsoohyun.planiotver01.Item.MyPlantItem;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Method;
+import java.util.Set;
 import java.util.UUID;
 
 import static com.example.kimsoohyun.planiotver01.R.id.sun_movement_switch;
 
 public class MenuActivity extends AppCompatActivity {
-   // private ConnectedThread mConnectedThread;
+    private ConnectedThread mConnectedThread;
 
 
     private static final String TAG = "bluetooth";
     final int RECIEVE_MESSAGE = 1;
-  //  private BluetoothAdapter btAdapter = null;
+    private BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
     private StringBuilder sb = new StringBuilder();
     private static int flag = 0;
@@ -98,7 +103,7 @@ public class MenuActivity extends AppCompatActivity {
 
 
 
-      /*  handler = new Handler() {
+       handler = new Handler() {
             public void handleMessage(android.os.Message msg) {
                 switch (msg.what) {
                     case RECIEVE_MESSAGE:
@@ -121,7 +126,7 @@ public class MenuActivity extends AppCompatActivity {
                 btAdapter = BluetoothAdapter.getDefaultAdapter();
                 checkBTState();
             }
-        };*/
+        };
         lighting.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
 
             @Override
@@ -184,25 +189,39 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.switch_menu, menu);
-        MenuItem item  = menu.findItem(R.id.mySwitchswitch12);
 
-            Switch switch1 = (Switch) item.getActionView().findViewById(R.id.switchForActionBar);
+
 
         return true;
     }
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-        Toast.makeText(this,"Monitored switch is"+(isChecked?"on":"off"),
-                Toast.LENGTH_SHORT).show();
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id==R.id.mySwitchswitch12){
+            if(item.getTitle().toString().equals("수동모드")){
             Toast.makeText(this,"here",Toast.LENGTH_SHORT).show();
+            item.setTitle("자동모드");
+            lighting.setEnabled(false);
+
+            curtainForTemp.setEnabled(false);
+            curtain.setEnabled(false);}
+            else if(item.getTitle().toString().equals("자동모드")){
+                Toast.makeText(this,"here",Toast.LENGTH_SHORT).show();
+                item.setTitle("수동모드");
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(MenuActivity.this);
+
+
+                lighting.setEnabled(true);
+                curtainForTemp.setEnabled(true);
+                curtain.setEnabled(true);
+            }
 
 
         }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -210,7 +229,7 @@ public class MenuActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
 
-      /*  Log.d(TAG, "...In onPause()...");
+       Log.d(TAG, "...In onPause()...");
         Toast toast = Toast.makeText(MenuActivity.this,"In onPause",Toast.LENGTH_SHORT);
         toast.show();
 
@@ -220,7 +239,7 @@ public class MenuActivity extends AppCompatActivity {
             errorExit("Fatal Error", "In onPause() and failed to close socket." + e.getMessage() + ".");
             Toast tooast = Toast.makeText(MenuActivity.this,"In onPause() and failed to close socket." + e.getMessage() ,Toast.LENGTH_SHORT);
             tooast.show();
-        }*/
+        }
     }
 
     private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
@@ -248,7 +267,7 @@ public class MenuActivity extends AppCompatActivity {
         toast.show();
 
 
-       /* btAdapter = BluetoothAdapter.getDefaultAdapter();
+       btAdapter = BluetoothAdapter.getDefaultAdapter();
 
 
             Set<BluetoothDevice> pairDevices = btAdapter.getBondedDevices();
@@ -296,13 +315,13 @@ public class MenuActivity extends AppCompatActivity {
 
         mConnectedThread = new ConnectedThread(btSocket);
         mConnectedThread.start();
-        mConnectedThread.readSensor();*/
+        mConnectedThread.readSensor();
 
 
     }
 
 
-   /* private void checkBTState() {
+    private void checkBTState() {
         if (btAdapter == null) {
             errorExit("Fatal Error", "Bluetooth not support");
         } else {
@@ -315,9 +334,10 @@ public class MenuActivity extends AppCompatActivity {
                 startActivityForResult(enableBtIntent, 1);
             }
         }
-    }*/
+    }
     public void wateringThePlant(View v){
-        Toast.makeText(getBaseContext(), "buttonClicked", Toast.LENGTH_LONG).show();
+
+        Toast.makeText(MenuActivity.this, "buttonClicked", Toast.LENGTH_LONG).show();
       //  mConnectedThread.write("5");
 
     }
@@ -342,7 +362,7 @@ public class MenuActivity extends AppCompatActivity {
         finish();
     }
 
-  /*  private class ConnectedThread extends Thread {
+    private class ConnectedThread extends Thread {
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
         int readBufferPosition=0;
@@ -444,7 +464,7 @@ public class MenuActivity extends AppCompatActivity {
                 toast.show();
             }
         }
-    }*/
+    }
 
 
 }

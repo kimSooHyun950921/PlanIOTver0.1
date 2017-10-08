@@ -46,10 +46,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         waterLevelLayout = (LinearLayout)findViewById(R.id.water_level_layout);
-
+        startActivity(new Intent(this, splashActivity.class));
 
         imageView = (ImageView)findViewById(R.id.imageview2);
         testRef.addValueEventListener(new ValueEventListener() {

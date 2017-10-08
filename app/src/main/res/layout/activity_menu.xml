@@ -16,17 +16,17 @@
            <ListView
                android:id="@+id/myplantList"
                android:layout_width="match_parent"
-               android:layout_height="0dp"
-               android:layout_weight="1"></ListView>
+               android:layout_height="450dp"
+               ></ListView>
 
            <LinearLayout
-               android:layout_weight="0.1"
+
                android:onClick="gotoWaterLevelPage"
                android:id="@+id/water_level_layout"
                android:layout_marginLeft="10dp"
                android:layout_marginRight="10dp"
                android:layout_width="match_parent"
-               android:layout_height="0dp"
+               android:layout_height="50dp"
                android:orientation="horizontal">
 
                <ImageView
