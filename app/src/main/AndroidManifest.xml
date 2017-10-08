@@ -2,11 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kimsoohyun.planiotver01">
 
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <ueses-permission android:name="android.permission.INTERNET"></ueses-permission>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
     <application
         android:allowBackup="true"
