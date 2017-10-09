@@ -95,21 +95,15 @@
                     android:src="@drawable/sun"
                    />
                     </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="100lux"
-                    android:id="@+id/suntxt"
-                    />
-                <com.github.lzyzsd.circleprogress.CircleProgress
 
+                <com.github.lzyzsd.circleprogress.CircleProgress
                     android:layout_marginTop="20dp"
                     android:layout_gravity="center"
                     android:id="@+id/sun_circle_progress"
                     android:layout_marginLeft="50dp"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    custom:circle_progress="20"/>
+                    custom:circle_progress="50"/>
                 <LinearLayout
                         android:id="@+id/sun_movementLinearLayout"
                         android:layout_gravity="center"
@@ -136,6 +130,7 @@
                             android:text="커튼치기"/>
                         <Switch
                             android:id="@+id/sun_block_curtain"
+                            android:enabled="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
@@ -152,6 +147,7 @@
                         android:layout_height="wrap_content"
                         android:text="불켜기"/>
                     <Switch
+                        android:enabled="false"
                         android:id="@+id/sun_movement_switch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -187,11 +183,8 @@
                         android:src="@drawable/waterdrop"
                         android:textSize="20dp" />
                 </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="100lux"
-                    android:id="@+id/watertxt"/>
+
+
                 <com.github.lzyzsd.circleprogress.CircleProgress
                     android:id="@+id/circle_progress_water"
                     android:layout_width="60dp"
@@ -260,7 +253,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="30dp"
-                    android:text="20도"
+                    android:text="28.5도"
                     android:enabled="false" />
                 <LinearLayout
                     android:layout_gravity="center_vertical"
@@ -282,6 +275,7 @@
                         android:layout_height="wrap_content"
                         android:text="암막치기"/>
                     <Switch
+                        android:enabled="false"
                         android:id="@+id/sun_block_curtain_for_temp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

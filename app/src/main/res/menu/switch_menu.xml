@@ -5,7 +5,7 @@
     <item
 
         android:id="@+id/mySwitchswitch12"
-        android:title="수동모드"
+        android:title="자동모드"
         app:showAsAction="always"
        />
 </menu>
